@@ -1,19 +1,23 @@
-#include "SDL.h"
+#include "GameEngine.hpp"
+
+GameEngine *game;
 
 int main(int argc, char *argv[])
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window *window = SDL_CreateWindow("title",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		600, 400, SDL_WINDOW_SHOWN);
-	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+	game = new GameEngine(); // Game needs engine for start
 
-	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+	game->create("Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+		800, 600, 1, 0);
 
-	SDL_RenderClear(renderer);
+	while (game->isRunning())
+	{
+		game->events();
+		game->update();
+		game->render();
+	}
 
-	SDL_RenderPresent(renderer);
+	game->quit();
+
 
 	return 0;
 }
