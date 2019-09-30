@@ -2,8 +2,11 @@
 #define GAMEENGINE_HPP
 
 #include <Windows.h>
-
 #include "GameTime.hpp"
+
+//************************
+//	TODO: Add inputManager, vectors, 2d elements, colliders
+//************************
 
 class GameEngine
 {

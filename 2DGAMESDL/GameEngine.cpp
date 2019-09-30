@@ -1,10 +1,8 @@
 #include "GameEngine.hpp"
 
-
-
 GameEngine::GameEngine()
 {
-	time = new GameTime(60, 1);
+	time = new GameTime(60, 1); //TODO: FPS not working well
 }
 
 void GameEngine::create(const char* gameName, int posX, int posY, int width, int height, bool debugMode, bool screenMode)
@@ -60,7 +58,22 @@ void GameEngine::events()
 
 void GameEngine::render()
 {
+	SDL_SetRenderDrawColor(gameRenderer, 70, 70, 70, 255);
+
 	SDL_RenderClear(gameRenderer);
+
+	SDL_Rect r;
+	r.x = 10;
+	r.y = 10;
+	r.w = 50;
+	r.h = 50;
+
+	// Set render color to blue ( rect will be rendered in this color )
+	SDL_SetRenderDrawColor(gameRenderer, 0, 0, 255, 0);
+
+	// Render rect
+	SDL_RenderFillRect(gameRenderer, &r);
+
 	SDL_RenderPresent(gameRenderer);
 }
 
@@ -85,4 +98,6 @@ bool GameEngine::isRunning()
 
 GameEngine::~GameEngine()
 {
+	if (time)
+		delete time;
 }

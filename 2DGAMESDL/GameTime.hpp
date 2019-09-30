@@ -13,15 +13,17 @@ public:
 	GameTime(float RefreshRate, bool vsync);
 	void update();
 	void frameRate();
+	void capFrameRate(int framePerSec);
 	float gameTime();
 	void quit();
 
 	~GameTime();
 private:
-	Uint64 _startTime;
-	Uint64 _lastUpdate;
+	Uint32 _startTime;
+	Uint32 _lastUpdate;
 	float _frameRate; // frame rate
 	bool _vsync;
+	int sayac = 0;
 };
 
 #endif // !GameTime.hpp

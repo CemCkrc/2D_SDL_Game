@@ -5,19 +5,30 @@ GameTime::GameTime(float RefreshRate, bool vsync)
 	_startTime = SDL_GetPerformanceCounter();
 	_frameRate = RefreshRate;
 	_vsync = vsync;
-
 }
 
 void GameTime::update()
 {
-	_lastUpdate = SDL_GetPerformanceCounter();
+	_lastUpdate = SDL_GetTicks();
 }
 
 void GameTime::frameRate()
 {
-	Uint64 end = SDL_GetPerformanceCounter();
-	float elapsed = (end - _lastUpdate) / (float)SDL_GetPerformanceFrequency();
-	std::cout << "Current Frame Rate: " << std::to_string(1.0f / elapsed) << std::endl;
+	std::cout << "frame : " << sayac << std::endl;
+		sayac++;
+	if (!_vsync)
+		return;
+
+	Uint32 end = SDL_GetTicks();
+	int frameTime = SDL_GetTicks() - _lastUpdate;
+
+	if (_frameRate > frameTime)
+		SDL_Delay(_frameRate - frameTime);
+}
+
+void GameTime::capFrameRate(int framePerSec)
+{
+	_frameRate = 1000 / framePerSec;
 }
 
 float GameTime::gameTime()
@@ -32,8 +43,6 @@ void GameTime::quit()
 
 }
 
-
 GameTime::~GameTime()
 {
-
 }
