@@ -1,9 +1,7 @@
 #ifndef GAMEENGINE_HPP
 #define GAMEENGINE_HPP
 
-#include <iostream>
 #include <Windows.h>
-#include "SDL.h"
 
 #include "GameTime.hpp"
 

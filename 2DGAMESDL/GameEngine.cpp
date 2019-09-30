@@ -4,7 +4,7 @@
 
 GameEngine::GameEngine()
 {
-	time = new GameTime();
+	time = new GameTime(60, 1);
 }
 
 void GameEngine::create(const char* gameName, int posX, int posY, int width, int height, bool debugMode, bool screenMode)
@@ -40,6 +40,13 @@ void GameEngine::create(const char* gameName, int posX, int posY, int width, int
 
 void GameEngine::update()
 {
+	time->update();
+
+	events();
+	//update
+	render();
+
+	time->frameRate();
 }
 
 void GameEngine::events()
