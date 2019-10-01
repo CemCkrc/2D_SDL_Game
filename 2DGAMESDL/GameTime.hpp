@@ -23,7 +23,6 @@ private:
 	Uint32 _lastUpdate;
 	float _frameRate; // frame rate
 	bool _vsync;
-	int sayac = 0;
 };
 
 #endif // !GameTime.hpp

@@ -1,11 +1,12 @@
 #include "GameEngine.hpp"
 
+
 GameEngine::GameEngine()
 {
 	time = new GameTime(60, 1); //TODO: FPS not working well
 }
 
-void GameEngine::create(const char* gameName, int posX, int posY, int width, int height, bool debugMode, bool screenMode)
+void GameEngine::create(const char* gameName, Vector2D position, Vector2D size, bool debugMode, bool screenMode)
 {
 	int flags = 0;
 	flags = screenMode ? 1 : 0; // SDL_WINDOW_FULLSCREEN == 1
@@ -18,7 +19,7 @@ void GameEngine::create(const char* gameName, int posX, int posY, int width, int
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		printf("Game Window Initializing...\n");
-		gameWindow = SDL_CreateWindow(gameName, posX, posY, width, height, flags);
+		gameWindow = SDL_CreateWindow(gameName, 0, 0,800, 600, flags);
 		if (!gameWindow)
 			printf("Failed To Create Game Window\nError : %s\n", SDL_GetError());
 		else
@@ -38,13 +39,13 @@ void GameEngine::create(const char* gameName, int posX, int posY, int width, int
 
 void GameEngine::update()
 {
-	time->update();
+	//time->update();
 
 	events();
 	//update
 	render();
 
-	time->frameRate();
+	//time->frameRate();
 }
 
 void GameEngine::events()

@@ -14,8 +14,6 @@ void GameTime::update()
 
 void GameTime::frameRate()
 {
-	std::cout << "frame : " << sayac << std::endl;
-		sayac++;
 	if (!_vsync)
 		return;
 

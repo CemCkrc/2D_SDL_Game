@@ -20,12 +20,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameTime.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.hpp" />
+    <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameTime.hpp" />
+    <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="Transform.hpp" />
+    <ClInclude Include="Vector2D.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

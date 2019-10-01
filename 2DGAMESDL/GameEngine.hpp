@@ -3,16 +3,17 @@
 
 #include <Windows.h>
 #include "GameTime.hpp"
+#include "Vector2D.hpp" // replace with Scene class
 
 //************************
-//	TODO: Add inputManager, vectors, 2d elements, colliders
+//	TODO: Add inputManager, 2d elements, colliders, gameObjects
 //************************
 
 class GameEngine
 {
 public:
 	GameEngine();
-	void create(const char* gameName, int posX, int posY, int width, int height, bool debugMode, bool screenMode);
+	void create(const char* gameName, Vector2D position, Vector2D size, bool debugMode, bool screenMode);
 	void update();
 	void events();
 	void render();
