@@ -1,5 +1,7 @@
 #include "Vector2D.hpp"
 
+//TODO: Add friendly operator
+
 Vector2D::Vector2D(float xVal, float yVal)
 {
 	_x = new float;
