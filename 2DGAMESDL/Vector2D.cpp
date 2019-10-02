@@ -5,8 +5,8 @@ Vector2D::Vector2D(float xVal, float yVal)
 	_x = new float;
 	_y = new float;
 
-	_x = &xVal;
-	_y = &yVal;
+	*_x = xVal;
+	*_y = yVal;
 }
 
 

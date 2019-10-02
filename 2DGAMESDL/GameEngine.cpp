@@ -3,10 +3,10 @@
 
 GameEngine::GameEngine()
 {
-	time = new GameTime(60, 1); //TODO: FPS not working well
+	time = new GameTime(60, 0); //TODO: FPS not working well
 }
 
-void GameEngine::create(const char* gameName, Vector2D position, Vector2D size, bool debugMode, bool screenMode)
+void GameEngine::create(const char* gameName, Vector2D *position, Vector2D *size, bool debugMode, bool screenMode)
 {
 	int flags = 0;
 	flags = screenMode ? 1 : 0; // SDL_WINDOW_FULLSCREEN == 1
@@ -19,7 +19,8 @@ void GameEngine::create(const char* gameName, Vector2D position, Vector2D size, 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		printf("Game Window Initializing...\n");
-		gameWindow = SDL_CreateWindow(gameName, 0, 0,800, 600, flags);
+		gameWindow = SDL_CreateWindow(gameName, position->X(), position->Y()
+			, size->X(), size->Y(), flags);
 		if (!gameWindow)
 			printf("Failed To Create Game Window\nError : %s\n", SDL_GetError());
 		else
@@ -39,13 +40,13 @@ void GameEngine::create(const char* gameName, Vector2D position, Vector2D size, 
 
 void GameEngine::update()
 {
-	//time->update();
+	time->update();
 
 	events();
 	//update
 	render();
 
-	//time->frameRate();
+	time->frameRate();
 }
 
 void GameEngine::events()
@@ -69,10 +70,8 @@ void GameEngine::render()
 	r.w = 50;
 	r.h = 50;
 
-	// Set render color to blue ( rect will be rendered in this color )
 	SDL_SetRenderDrawColor(gameRenderer, 0, 0, 255, 0);
 
-	// Render rect
 	SDL_RenderFillRect(gameRenderer, &r);
 
 	SDL_RenderPresent(gameRenderer);
@@ -82,14 +81,8 @@ void GameEngine::quit()
 {
 	printf("Quitting Game...\n");
 
-	time->quit();
-	delete time;
-
-	SDL_DestroyWindow(gameWindow);
 	SDL_DestroyRenderer(gameRenderer);
-	SDL_Quit();
-
-	printf("Quit.\n");
+	SDL_DestroyWindow(gameWindow);
 }
 
 bool GameEngine::isRunning()
@@ -99,6 +92,7 @@ bool GameEngine::isRunning()
 
 GameEngine::~GameEngine()
 {
-	if (time)
-		delete time;
+	delete time; //Memory leak fixed
+	SDL_Quit();
+	printf("Quit.\n");
 }
