@@ -1,6 +1,6 @@
 #include "Vector2D.hpp"
 
-//TODO: Add friendly operator
+//TODO: Add friendly operators
 
 Vector2D::Vector2D(float xVal, float yVal)
 {
