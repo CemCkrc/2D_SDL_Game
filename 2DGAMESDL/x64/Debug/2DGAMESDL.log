@@ -1,4 +1,8 @@
 ﻿  GameEngine.cpp
 c:\users\bilgisayar\documents\github\2d_sdl_game\2dgamesdl\gameengine.cpp(23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\bilgisayar\documents\github\2d_sdl_game\2dgamesdl\gameengine.cpp(22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  GameScene.cpp
+  Vector2D.cpp
+  main.cpp
+  Generating Code...
   2DGAMESDL.vcxproj -> C:\Users\Bilgisayar\Documents\GitHub\2D_SDL_Game\x64\Debug\2DGAMESDL.exe

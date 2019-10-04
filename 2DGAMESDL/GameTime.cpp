@@ -14,15 +14,16 @@ void GameTime::update()
 
 void GameTime::frameRate()
 {
-	std::cout << "game time :" << gameTime() << std::endl;
+	int _deltaTime = SDL_GetTicks() - _lastUpdate;
+
 	if (!_vsync) //TODO: Add sdl vsync function
 		return;
 
-	Uint32 end = SDL_GetTicks();
-	int frameTime = SDL_GetTicks() - _lastUpdate;
+	int waitTime = _frameRate - _deltaTime;
 
-	if (_frameRate > frameTime)
-		SDL_Delay(_frameRate - frameTime);
+	if (waitTime > 0)
+		SDL_Delay(waitTime);
+
 }
 
 void GameTime::capFrameRate(int framePerSec)
@@ -32,9 +33,14 @@ void GameTime::capFrameRate(int framePerSec)
 
 float GameTime::gameTime()
 {
-	Uint32 _endTime = SDL_GetPerformanceCounter();
-	double secondsElapsed = (double)(_endTime - _startTime)*1000 / (double)SDL_GetPerformanceCounter();
+	Uint32 _endTime = SDL_GetTicks();
+	float secondsElapsed = (float)(_endTime - _startTime) / (float)SDL_GetTicks();
 	return secondsElapsed;
+}
+
+float GameTime::deltaTime()
+{
+	return _deltaTime;
 }
 
 GameTime::~GameTime()

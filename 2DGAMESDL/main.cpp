@@ -1,3 +1,10 @@
+// Next Update is coming in February 2020 
+
+//************************ ROADMAP ************************
+//	TODO: Add inputManager, 2d elements, colliders, layers (Feb. 2020)
+//		  Add ai system, map editor, effects (??)
+//*********************************************************
+
 #include "GameEngine.hpp"
 
 #define _CRTDBG_MAP_ALLOC
@@ -25,6 +32,7 @@ int main(int argc, char *argv[])
 	delete pos;
 	delete size;
 
+	//GameUpdate
 	while (game->isRunning())
 		game->update();
 	game->quit();

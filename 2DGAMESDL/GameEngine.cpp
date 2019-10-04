@@ -3,13 +3,13 @@
 
 GameEngine::GameEngine()
 {
-	time = new GameTime(60, 0); //TODO: FPS not working well
+	time = new GameTime(60, 1);
 }
 
 void GameEngine::create(const char* gameName, Vector2D *position, Vector2D *size, bool debugMode, bool screenMode)
 {
 	int flags = 0;
-	flags = screenMode ? 1 : 0; // SDL_WINDOW_FULLSCREEN == 1
+	flags = screenMode ? 1 : 0; // SDL_WINDOW_FULLSCREEN = 1
 
 	if (!debugMode)
 		ShowWindow(GetConsoleWindow(), SW_HIDE); //Hide Console if not debugging
@@ -40,13 +40,12 @@ void GameEngine::create(const char* gameName, Vector2D *position, Vector2D *size
 
 void GameEngine::update()
 {
-	time->update();
+	time->update(); // Update time
 
 	events();
-	//update
 	render();
 
-	time->frameRate();
+	time->frameRate(); // Check deltaTime and frameRate
 }
 
 void GameEngine::events()
@@ -64,13 +63,13 @@ void GameEngine::render()
 
 	SDL_RenderClear(gameRenderer);
 
-	SDL_Rect r;
+	SDL_Rect r; //Example
 	r.x = 10;
 	r.y = 10;
 	r.w = 50;
 	r.h = 50;
 
-	SDL_SetRenderDrawColor(gameRenderer, 0, 0, 255, 0);
+	SDL_SetRenderDrawColor(gameRenderer, 0, rand() % 256, rand() % 256, 0);
 
 	SDL_RenderFillRect(gameRenderer, &r);
 
@@ -93,6 +92,7 @@ bool GameEngine::isRunning()
 GameEngine::~GameEngine()
 {
 	delete time; //Memory leak fixed
+	delete gameScene;
 	SDL_Quit();
 	printf("Quit.\n");
 }

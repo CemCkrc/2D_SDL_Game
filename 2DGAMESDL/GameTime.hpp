@@ -15,13 +15,14 @@ public:
 	void frameRate();
 	void capFrameRate(int framePerSec);
 	float gameTime();
-	void quit();
+	float deltaTime();
 
 	~GameTime();
 private:
 	Uint32 _startTime;
 	Uint32 _lastUpdate;
 	float _frameRate; // frame rate
+	float _deltaTime;
 	bool _vsync;
 };
 

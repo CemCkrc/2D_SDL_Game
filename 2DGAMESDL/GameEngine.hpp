@@ -3,11 +3,7 @@
 
 #include <Windows.h>
 #include "GameTime.hpp"
-#include "GameObject.hpp" //replace with Scene class
-
-//************************
-//	TODO: Add inputManager, 2d elements, colliders, gameObjects
-//************************
+#include "GameScene.hpp"
 
 class GameEngine
 {
@@ -26,6 +22,7 @@ private:
 	SDL_Window *gameWindow;
 	SDL_Renderer *gameRenderer;
 	GameTime *time;
+	GameScene *gameScene;
 	bool _isRunning;
 };
 
