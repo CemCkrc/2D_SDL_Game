@@ -1,10 +1,3 @@
-// Next Update is coming in February 2020 
-
-//************************ ROADMAP ************************
-//	TODO: Add inputManager, 2d elements, colliders, layers (Feb. 2020)
-//		  Add ai system, map editor, effects (??)
-//*********************************************************
-
 #include "GameEngine.hpp"
 
 #define _CRTDBG_MAP_ALLOC
